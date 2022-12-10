@@ -1,0 +1,27 @@
+{
+  "name": "bender",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack",
+    "start": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "dotenv": "^16.0.3",
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.7.2",
+    "yarn": "^1.22.19"
+  },
+  "devDependencies": {
+    "html-webpack-plugin": "^5.5.0",
+    "nodemon": "^2.0.20",
+    "webpack-cli": "^5.0.1"
+  }
+}

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5">
+	<meta name="author" content="AdminKit">
+	<meta name="keywords" content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
+
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link rel="shortcut icon" href="img/icons/icon-48x48.png" />
+
+	<link rel="canonical" href="gastos.html" />
+
+	<title>Profile</title>
+
+	<link href="css/app.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <script type="text/javascript">
+		let categoria = " <%= cat  %>"
+		let data = " <%= dat  %> "
+		let data_mes = " <%= mes  %> "
+		categoria = categoria.split(",")
+		data = data.split(",")
+		data_mes = data_mes.split(",")
+		
+      	google.charts.load('current', {'packages':['corechart']});
+	  	google.charts.load('current', {'packages':['bar']});
+		google.charts.load('current', {'packages':['line']});
+      	google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+		var dados = new google.visualization.DataTable();
+        dados.addColumn('string', 'Topping');
+        dados.addColumn('number', 'Slices');
+		for(i=0;i<categoria.length;i=i+2){
+			dados.addRow([categoria[i],+categoria[i+1]])
+		}
+        var options = {
+          title: 'Gastos por categoria',
+		  width: 900,
+		height: 500,
+		backgroundColor: 'transparent',
+		is3D: false,
+        };
+
+		var dados2 = new google.visualization.DataTable();
+        dados2.addColumn('string', 'Dias');
+        dados2.addColumn('number', 'Valor');
+		for(i=0;i<data.length;i=i+2){
+			dados2.addRow([data[i],+data[i+1]])
+		}
+
+        var options2 = {
+			backgroundColor: 'transparent',
+			chart: {
+            title: 'Gastos da semana',
+            subtitle: 'Gastos por dia na semana corrente',
+          }
+        };
+
+		var dados3 = new google.visualization.DataTable();
+        dados3.addColumn('string', 'Mês');
+        dados3.addColumn('number', 'Valor');
+		for(i=0;i<data_mes.length;i=i+2){
+			dados3.addRow([ data_mes[i] , +data_mes[i+1]])
+		}
+
+        var options3 = {
+			backgroundColor: 'transparent',
+			chart: {
+            title: 'Gastos mensais',
+            subtitle: 'Gastos nos ultimo meses',
+          }
+        };
+
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+		var chart2 = new google.charts.Bar(document.getElementById('columnchart_material'));
+		var chart3 =  new google.charts.Bar(document.getElementById('columnchart_material1'));
+		chart2.draw(dados2, google.charts.Bar.convertOptions(options2));
+        chart.draw(dados, options);
+		chart3.draw(dados3, google.charts.Bar.convertOptions(options3));
+
+      }
+
+    </script>
+
+</head>
+
+<body>
+
+	<div id="piechart" style="position: absolute; left: 200px; top: 200px; "></div>
+	<div id="columnchart_material" style="position: absolute; left: 1000px; top: 200px; "></div>
+	<div id="columnchart_material1" style="width: 900px; height: 500px; position: absolute; left: 400px; top: 800px;"></div>
+
+	<div class="wrapper">
+		<nav id="sidebar" class="sidebar js-sidebar">
+			<div class="sidebar-content js-simplebar">
+				<a class="sidebar-brand" href="index.html">
+          <span class="align-middle">Recursos</span>
+        </a>
+
+				<ul class="sidebar-nav">
+					<li class="sidebar-header">
+						Sub-Pages
+					</li>
+
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="/home">
+              <i class="align-middle" data-feather="home"></i> <span class="align-middle">Home</span>
+            </a>
+					</li>
+					<li class="sidebar-item active">
+						<a class="sidebar-link" href="/gastos">
+              <i class="align-middle" data-feather="dollar-sign"></i> <span class="align-middle">Gastos</span>
+            </a>
+					</li>
+                    <li class="sidebar-item ">
+						<a class="sidebar-link" href="/cadastro">
+              <i class="align-middle" data-feather="plus"></i> <span class="align-middle">Cadastros</span>
+            </a>
+					</li>
+
+					<li class="sidebar-item ">
+						<a class="sidebar-link" href="/mes">
+              <i class="align-middle" data-feather="calendar"></i> <span class="align-middle">Gastos do mês</span>
+            </a>
+					</li>
+					<li class="sidebar-item ">
+						<a class="sidebar-link" href="/totalG">
+              <i class="align-middle" data-feather="book"></i> <span class="align-middle">Historico de Gastos</span>
+            </a>
+					</li>
+
+				</ul>
+
+		</nav>
+
+		<div class="main">
+			<nav class="navbar navbar-expand navbar-light navbar-bg">
+				<a class="sidebar-toggle js-sidebar-toggle">
+          <i class="hamburger align-self-center"></i>
+        </a>
+
+				<div class="navbar-collapse collapse">
+					<ul class="navbar-nav navbar-align">
+						
+						
+						<li class="nav-item dropdown">
+							<a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#" data-bs-toggle="dropdown">
+                <i class="align-middle" data-feather="settings"></i>
+              </a>							
+			</nav>
+
+			<main class="content">
+				
+			</main>
+		</div>
+	</div>
+
+	<script src="js/app.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5">
+	<meta name="author" content="AdminKit">
+	<meta name="keywords" content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link rel="shortcut icon" href="img/icons/icon-48x48.png" />
+	<link rel="canonical" href="metas.ejs" />
+	<title>Metas</title>
+	<link href="css/app.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+
+</head>
+
+<style>
+	.popup {
+    display: none;
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    border: 3px solid #f1f1f1;
+    z-index: 9;
+  }
+
+  .container {
+    max-width: 300px;
+    padding: 10px;
+    background-color: rgb(249, 249, 254);
+    border: #ffff;
+  }
+
+  .container input[type=text], .form-container input[type=password] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    border: none;
+    background: #f1f1f1;
+  }
+
+  .form-container input[type=text]:focus, .form-container input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+  }
+
+  .form-container .btn {
+    background-color: #04AA6D;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom:10px;
+    opacity: 0.8;
+  }
+	</style>
+
+<body>
+	<div class="wrapper">
+		<nav id="sidebar" class="sidebar js-sidebar">
+			<div class="sidebar-content js-simplebar">
+				<a class="sidebar-brand" href="index.html">
+          <span class="align-middle">Recursos</span>
+        </a>
+
+				<ul class="sidebar-nav">
+					<li class="sidebar-header">
+						Sub-Pages
+					</li>
+
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="/home">
+              <i class="align-middle" data-feather="home"></i> <span class="align-middle">Home</span>
+            </a>
+					</li>
+					<li class="sidebar-item ">
+						<a class="sidebar-link" href="/entrada">
+              <i class="align-middle" data-feather="credit-card"></i> <span class="align-middle">Entradas</span>
+            </a>
+					</li>
+                    <li class="sidebar-item ">
+						<a class="sidebar-link" href="/gastos">
+              <i class="align-middle" data-feather="dollar-sign"></i> <span class="align-middle">Gastos</span>
+            </a>
+					</li>
+
+					<li class="sidebar-item ">
+						<a class="sidebar-link" href="/metas">
+              <i class="align-middle" data-feather="cloud"></i> <span class="align-middle">Metas</span>
+            </a>
+					</li>
+					<li class="sidebar-item active ">
+						<a class="sidebar-link" href="/dividas">
+              <i class="align-middle" data-feather="coffee"></i> <span class="align-middle">Cobrar Dividas</span>
+            </a>
+					</li>
+					<li class="sidebar-item  ">
+						<a class="sidebar-link" href="/devendo">
+              <i class="align-middle" data-feather="anchor"></i> <span class="align-middle">Dividas a pagar</span>
+            </a>
+					</li>
+
+				</ul>
+
+		</nav>
+
+		<div class="main">
+			
+			<nav class="navbar navbar-expand navbar-light navbar-bg">
+				<a class="sidebar-toggle js-sidebar-toggle">
+          <i class="hamburger align-self-center"></i>
+        </a>
+
+				<div class="navbar-collapse collapse">
+					<ul class="navbar-nav navbar-align">
+						
+						
+						<li class="nav-item dropdown">
+							<a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#" data-bs-toggle="dropdown">
+                <i class="align-middle" data-feather="settings"></i>
+              </a>							
+			</nav>
+
+			<main class="content">
+                <div style="position: relative;
+                left:40%;
+                top:10%">
+				<button type="button" class="button" id="yes" style="background:rgb(34,46,60);color:white">Adicionar Divida</button>
+				<button type="button" class="button" id="next" style="background:rgb(34,46,60);color:white">Proxima Divida</button>
+            </div>
+				<div class="popup" id="adPanel">
+					<form class="container" action="/dividas" method="post">
+					  <h1>Nova Divida</h1>
+					
+					  <label for="number"><b>Nome</b></label>
+					  <input type="text" placeholder="Enter Account Number"  id="accnumb" name="nome">
+					
+					  <label for="tipo"><b>Valor</b></label>
+					  <input type="text" placeholder="Enter Account Type"  id="acctype" name="valor">
+
+                      <label class="form-label">Data</label>
+					  <input class="form-control form-control-lg" type="date" name="data" placeholder="Enter date" />
+
+                      <label for="tipo"><b>Devedor</b></label>
+					  <input type="text" placeholder="Enter Account Type"  id="acctype" name="devedor">
+										
+					  <button type="submit" class="button" id="yes">Mudar</button>
+					  <button type="button" class="button" id="no">Close</button>
+					</form>
+					</div>
+
+                    <div style="background:white; margin: auto;
+                    width: 50%;
+                    border: 3px solid rgb(38, 36, 85);
+                    padding: 10px;
+                    border-radius: 10px;
+                    position: relative;
+                    top:20%">
+					<h1 style="text-align: center;" > Divida:<span id="myText"  ></span></h1>
+                    <h1 style="text-align: center;" > Valor: <span id="myValor"  ></span></h1>
+                    <h1 style="text-align: center;" > Data: <span id="myData"  ></span></h1>
+                    <h1 style="text-align: center;" > Devedor: <span id="myDevedor"  ></span></h1>
+                    </div>
+			</main>
+		</div>
+	</div>
+
+	<script src="js/app.js"></script>
+
+</body>
+
+<script>
+	let dados = " <%= aux  %>";
+	let i=4
+	dados = dados.split(",")
+	document.getElementById("myText").innerHTML = dados[0];
+    document.getElementById("myData").innerHTML = dados[1];
+    document.getElementById("myValor").innerHTML = dados[2];
+    document.getElementById("myDevedor").innerHTML = dados[3];
+	
+	var botão = document.getElementById("yes")
+	var pop = document.getElementById("adPanel")
+	botão.addEventListener('click',function(){
+		pop.style.display = "block";
+	})
+
+    var fecha = document.getElementById("no")
+	fecha.addEventListener('click',function(){
+		pop.style.display = "none";
+	})
+
+	var proximo = document.getElementById("next")
+	proximo.addEventListener('click',function(){
+
+		if(i>=dados.length-1){
+			i=0
+		}
+
+		document.getElementById("myText").innerHTML = dados[i];
+        document.getElementById("myData").innerHTML = dados[i+1];
+        document.getElementById("myValor").innerHTML = dados[i+2];
+        document.getElementById("myDevedor").innerHTML = dados[i+3];
+		i=i+4
+	})
+
+  </script>
+
+
+</html>
